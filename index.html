@@ -3,21 +3,146 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CODA Masters makes CodeCats, Tarotez, Genvidi, and other projects. Hans Manuel Grenner is one of the co-founders.">
+<meta name="theme-color" content="#2b2138">
 <title>CODA Masters</title>
 <style>
-  body { margin:0; min-height:100vh; display:flex; align-items:center;
-         justify-content:center; background:#2b2138; color:#f3ece2;
-         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-         text-align:center; padding:24px; }
-  h1 { margin:0 0 8px; font-size:28px; letter-spacing:-.01em; }
-  p  { margin:0; color:#a79d90; }
-  a  { color:#f0ae4a; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    background: #2b2138;
+    color: #f3ece2;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+  }
+  main {
+    margin: auto;
+    width: min(100% - 48px, 28rem);
+    padding: 48px 0;
+  }
+  h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    letter-spacing: -.01em;
+  }
+  .tagline {
+    margin: 0;
+    color: #a79d90;
+  }
+  .founder {
+    margin: 20px 0 0;
+    line-height: 1.5;
+  }
+  h2 {
+    margin: 36px 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #a79d90;
+  }
+  .projects {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .projects li {
+    padding: 16px 0;
+  }
+  .projects li + li {
+    border-top: 1px solid rgba(243, 236, 226, 0.14);
+  }
+  a {
+    color: #f0ae4a;
+  }
+  .projects a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .projects a:hover,
+  .projects a:focus-visible,
+  .tagline a:hover,
+  .tagline a:focus-visible {
+    text-decoration: underline;
+  }
+  a:focus-visible {
+    outline: 2px solid #f0ae4a;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .projects p {
+    margin: 4px 0 0;
+    color: #a79d90;
+    line-height: 1.45;
+  }
+  @media (min-width: 720px) {
+    h1 { font-size: 36px; }
+    main { width: min(100% - 64px, 32rem); }
+  }
 </style>
 </head>
 <body>
   <main>
     <h1>CODA Masters</h1>
-    <p>Makers of <a href="https://play.google.com/store/apps/details?id=com.codamasters.codecats">CodeCats</a>.</p>
+    <p class="tagline">Makers of <a href="https://play.google.com/store/apps/details?id=com.codamasters.codecats">CodeCats</a>.</p>
+    <p class="founder">Hans Manuel Grenner is one of the co-founders of CODA Masters.</p>
+
+    <h2>Projects</h2>
+    <ul class="projects" id="projects"></ul>
   </main>
+  <script>
+    // Add a project by appending an object: { name, url, description }.
+    const projects = [
+      {
+        name: "Tarotez",
+        url: "https://tarotez.com",
+        description: "AI tarot readings online."
+      },
+      {
+        name: "Genvidi",
+        url: "https://genvidi.com",
+        description: "AI image and video studio."
+      },
+      {
+        name: "IdeaChollo",
+        url: "https://ideachollo.com",
+        description: "Analyze a home in Spain before buying it."
+      },
+      {
+        name: "4Day Work",
+        url: "https://4daywork.com",
+        description: "Jobs with a 4-day work week."
+      },
+      {
+        name: "HideImage",
+        url: "https://hideimage.com",
+        description: "Free, private image redaction: blur, pixelate, black out."
+      },
+      {
+        name: "Confiles",
+        url: "https://confiles.com",
+        description: "Free browser-based file tools for PDF, image, JSON, and ZIP."
+      },
+      {
+        name: "CodeCats",
+        url: "https://play.google.com/store/apps/details?id=com.codamasters.codecats",
+        description: "A mobile game."
+      }
+    ];
+
+    const list = document.getElementById("projects");
+    for (const project of projects) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = project.url;
+      link.textContent = project.name;
+      const description = document.createElement("p");
+      description.textContent = project.description;
+      item.append(link, description);
+      list.append(item);
+    }
+  </script>
 </body>
 </html>
